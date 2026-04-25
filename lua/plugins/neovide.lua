@@ -10,11 +10,11 @@ return {
       n = {
         ["<M-=>"] = {
           function() require("utils.neovide").change_opacity(0.05) end,
-          desc = "Increase opacity",
+          desc = "Increase Neovide opacity",
         },
         ["<M-->"] = {
           function() require("utils.neovide").change_opacity(-0.05) end,
-          desc = "Decrease opacity",
+          desc = "Decrease Neovide opacity",
         },
       },
     },
@@ -27,14 +27,7 @@ return {
         -- default background
         background = "dark",
       },
-      g = { -- configure vim.g variables
-        -- -- configure scaling
-        -- neovide_scale_factor = 1.0,
-        -- -- configure padding
-        -- neovide_padding_top = 0,
-        -- neovide_padding_bottom = 0,
-        -- neovide_padding_right = 0,
-        -- neovide_padding_left = 0,
+      g = {
         neovide_opacity = 0.95,
         neovide_normal_opacity = 0.95,
 

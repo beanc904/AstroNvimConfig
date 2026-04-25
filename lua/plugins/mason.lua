@@ -22,6 +22,7 @@ return {
         "tree-sitter-cli",
         "clangd",
         "rust-analyzer",
+        "markdown-oxide",
       },
     },
   },

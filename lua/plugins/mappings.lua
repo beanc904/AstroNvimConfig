@@ -32,6 +32,13 @@ return {
             function() require("astrocore.buffer").nav(-1) end,
             desc = "Previous buffer",
           },
+          ["<Leader>N"] = {
+            function()
+              vim.opt.relativenumber = not vim.opt.relativenumber:get()
+              vim.opt.number = true
+            end,
+            desc = "Toggle relative line number",
+          },
         },
         t = {
           -- setting a mapping to false will disable it

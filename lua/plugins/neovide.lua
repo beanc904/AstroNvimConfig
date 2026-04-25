@@ -21,7 +21,7 @@ return {
     options = {
       opt = { -- configure vim.opt options
         -- configure font
-        guifont = "Maple Mono NF:h14",
+        guifont = require("utils.neovide").get_font(),
         -- line spacing
         linespace = 0,
         -- default background

@@ -22,4 +22,15 @@ function M.reset_scale()
   vim.notify("Neovide font scale reset to 1.0", vim.log.levels.INFO)
 end
 
+function M.get_font()
+  local sysname = vim.loop.os_uname().sysname
+  if sysname == "Linux" then
+    return "Maple Mono NF:h12"
+  elseif sysname == "Darwin" then
+    return "Maple Mono NF:h14"
+  else
+    return "Maple Mono NF:h16"
+  end
+end
+
 return M

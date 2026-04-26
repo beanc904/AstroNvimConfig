@@ -1,0 +1,73 @@
+#!/bin/bash
+
+source $COLOR_SCHEME_INCLUDE
+
+CONFIG_DIR="$HOME/.config"
+
+ZED_HOME="$CONFIG_DIR/zed"
+NVIM_HOME="$CONFIG_DIR/nvim"
+
+if [[ $1 == "zed" ]]; then
+  cd $ZED_HOME
+
+  if [[ $2 == "push" ]]; then
+    git add .
+    git commit -m "Auto Sync (arch): $(date +"%Y-%m-%d %T")"
+    git push origin main
+    if [ $? -eq 0 ]; then
+      success "Zed settings pushed to remote repository"
+    else
+      error "Something wrong with Zed push process"
+    fi
+  elif [[ $2 == "pull" ]]; then
+    git pull origin main
+    if [ $? -eq 0 ]; then
+      success "Zed settings pulled from remote repository"
+    else
+      error "Something wrong with Zed pull process"
+    fi
+  elif [[ $2 == "stash" ]]; then
+    git stash
+    if [ $? -eq 0 ]; then
+      success "Zed settings stashed locally"
+    else
+      error "Something wrong with Zed stash process"
+    fi
+  else
+    error "Usage: configsync zed [push|pull|stash]"
+    exit 1
+  fi
+elif [[ $1 = "nvim" ]]; then
+  cd $NVIM_HOME
+
+  if [[ $2 == "push" ]]; then
+    git add .
+    git commit -m "Auto Sync (arch): $(date +"%Y-%m-%d %T")"
+    git push origin main
+    if [ $? -eq 0 ]; then
+      success "Nvim settings pushed to remote repository"
+    else
+      error "Something wrong with Nvim push process"
+    fi
+  elif [[ $2 == "pull" ]]; then
+    git pull origin main
+    if [ $? -eq 0 ]; then
+      success "Nvim settings pulled from remote repository"
+    else
+      error "Something wrong with Nvim pull process"
+    fi
+  elif [[ $2 == "stash" ]]; then
+    git stash
+    if [ $? -eq 0 ]; then
+      success "Nvim settings stashed locally"
+    else
+      error "Something wrong with Nvim stash process"
+    fi
+  else
+    error "Usage: configsync nvim [push|pull|stash]"
+    exit 1
+  fi
+else
+  error "Usage: configsync [zed|nvim] [push|pull|stash]"
+  exit 1
+fi

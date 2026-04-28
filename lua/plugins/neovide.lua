@@ -2,6 +2,8 @@ if not vim.g.neovide then
   return {} -- do nothing if not in a Neovide session
 end
 
+local neovide = require "utils.neovide"
+
 return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
@@ -9,19 +11,27 @@ return {
     mappings = {
       n = {
         ["<M-=>"] = {
-          function() require("utils.neovide").change_opacity(0.05) end,
+          function() neovide.change_opacity(0.05) end,
           desc = "Increase Neovide opacity",
         },
         ["<M-->"] = {
-          function() require("utils.neovide").change_opacity(-0.05) end,
+          function() neovide.change_opacity(-0.05) end,
           desc = "Decrease Neovide opacity",
+        },
+        ["<M-.>"] = {
+          function() neovide.change_normal_opacity(0.05) end,
+          desc = "Increase Neovide normal opacity",
+        },
+        ["<M-,>"] = {
+          function() neovide.change_normal_opacity(-0.05) end,
+          desc = "Decrease Neovide normal opacity",
         },
       },
     },
     options = {
       opt = { -- configure vim.opt options
         -- configure font
-        guifont = require("utils.neovide").get_font(),
+        guifont = neovide.get_font(),
         -- line spacing
         linespace = 0,
         -- default background

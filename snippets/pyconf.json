@@ -1,0 +1,16 @@
+{
+  "Pyright Config Template": {
+    "prefix": ["pyconf"],
+    "body": [
+      "{",
+      "  \"pythonVersion\": \"${1:3.12}\",",
+      "  \"venvPath\": \"${2:/home/coffeebean/}miniforge3/envs\",",
+      "  \"venv\": \"${3:envname}\",",
+      "  \"typeCheckingMode\": \"basic\",",
+      "  \"reportMissingImports\": false,",
+      "  \"reportAttributeAccessIssue\": false",
+      "}"
+    ],
+    "description": "Create pyrightconfig.json template"
+  }
+}

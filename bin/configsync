@@ -13,6 +13,14 @@ usage() {
 
 run_git_action() {
   local app="$1"
+  case "$app" in
+    zed)
+      app_name="Zed"
+      ;;
+    nvim)
+      app_name="Nvim"
+      ;;
+  esac
   local action="$2"
   local repo="$CONFIG_DIR/$app"
 
@@ -43,25 +51,25 @@ run_git_action() {
       fi
 
       if git push origin main; then
-        success "${app^} settings pushed to remote repository"
+        success "$app_name settings pushed to remote repository"
       else
-        error "Something went wrong during ${app^} push process"
+        error "Something went wrong during $app_name push process"
       fi
       ;;
 
     pull)
       if git pull origin main; then
-        success "${app^} settings pulled from remote repository"
+        success "$app_name settings pulled from remote repository"
       else
-        error "Something went wrong during ${app^} pull process"
+        error "Something went wrong during $app_name pull process"
       fi
       ;;
 
     stash)
       if git stash; then
-        success "${app^} settings stashed locally"
+        success "$app_name settings stashed locally"
       else
-        error "Something went wrong during ${app^} stash process"
+        error "Something went wrong during $app_name stash process"
       fi
       ;;
 
